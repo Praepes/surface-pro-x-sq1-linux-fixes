@@ -1,5 +1,7 @@
 # Installed candidate boot entries
 
+**Later storage failure:** the initial wake report below was followed by owner-reported I/O errors executing `/usr/bin/ls` from the external root filesystem. Suspend acceptance is withdrawn pending [storage investigation](storage-after-resume.md); LTE testing is paused. The earlier log snapshot did not establish continued storage availability.
+
 These names describe the test installation; the paths are not an installer for other systems. The original kernel, DTB and initramfs were retained. The root filesystem is on the external USB device, so these changes persist on that device rather than being a RAM-only live session. Windows was not modified.
 
 | Menu entry | Purpose | Status on 2026-10-29 |

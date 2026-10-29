@@ -45,9 +45,9 @@
       "build_completed": true,
       "identical_builtin_symbol_exports": 15487,
       "installed_separate_kernel": true,
-      "hardware_boot_and_resume": "boot and s2idle recovery passed on current boot; longer-term validation remains",
+      "hardware_boot_and_resume": "boot passed; later root-storage I/O failure after initial wake observations; suspend acceptance withdrawn",
       "hardware_boot": "passed; running build ID matches",
-      "hardware_suspend_resume": "s2idle passed; physical screen/touch/Wi-Fi confirmed",
+      "hardware_suspend_resume": "unresolved failure: root-storage I/O and apparent USB re-enumeration",
       "s2idle_logged_complete_cycles": 2,
       "previous_xhci_recovery_error_seen_after_test": false,
       "all_pcie_devices_validated": false,
@@ -83,9 +83,24 @@
       "router_dhcp_reservation": "not configured by this task"
     },
     "power_key": {
-      "short_press_sleep_and_wake_owner_test": "passed",
+      "short_press_sleep_and_wake_owner_test": "initial screen/touch/Wi-Fi recovery, followed by storage failure; not stable",
       "owner_screen_touch_wifi_recovery": true,
       "observed_sleep_state": "s2idle"
+    },
+    "storage_after_resume": {
+      "status": "failed/unresolved",
+      "owner_absolute_path_ls_reports_io_error": true,
+      "owner_path_contains_usr_bin": true,
+      "previous_root_device": "/dev/sda2",
+      "owner_current_sd_block_names": [
+        "sdb",
+        "sdb1",
+        "sdb2"
+      ],
+      "inference": "strong evidence for USB-storage removal and re-enumeration; original mount retains failed block-device instance",
+      "transport_trigger": "not yet established",
+      "ssh_banner_exchange": "failed on last attempt",
+      "lte_testing": "paused"
     }
   },
   "running_kernel_build_id": "9d2b1e169016d3b069882defcf4d4c5c43e38fa9",
