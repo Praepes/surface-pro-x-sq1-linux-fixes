@@ -6,11 +6,11 @@ This is a repair journal, not a claim that every fitted device works. It disting
 
 | Change | Evidence | Remaining validation |
 | --- | --- | --- |
-| Display VSYNC clock shared-RCG backport | Patched module identified after reboot; owner confirmed desktop; two DPMS state cycles completed | Repeated cold/warm boot and suspend |
+| Display VSYNC clock shared-RCG backport | Patched module identified after reboot; owner confirmed desktop and screen after suspend/resume | Repeated cold/warm boot and longer-term testing |
 | Touch discovery and startup | Owner reports touch after reboot; stable udev tags survived; early iptsd `ENODEV` failures recovered with a later start; bounded retries added | Reboot test of retry addition and physical pen |
-| Power button → suspend | logind configuration and effective D-Bus value checked | Resume with the new kernel |
+| Power button → suspend | Owner tested short-press sleep/wake; screen, touch and Wi-Fi recovered; complete s2idle cycles in kernel log | Repeated lifecycle testing; deep suspend is not established |
 | Hyprland 0.55 configuration migration | Configuration errors cleared; desktop usable | Normal ongoing use |
-| USB and PCIe GDSC retention | Compiled and booted; running GNU build ID matches candidate; owner confirms normal screen and touch | Actual suspend/resume and repeated boot cycles |
+| USB and PCIe GDSC retention | Running build ID matches; two complete s2idle cycles logged without the previous xHCI recovery error; owner confirms screen/touch/Wi-Fi recovery | Repeated lifecycle testing and other PCIe devices |
 | A680 GMEM alignment | Experimental module compiled; extracted test initramfs contains 474 real modules, correct GPU/display build IDs and boot-driver coverage | Candidate boot and pixel regression |
 | Wi-Fi changing identity | Driver's invalid-MAC/random fallback identified; a device-local stable-MAC workaround staged | Application after reboot; router reservation for a fixed IP |
 

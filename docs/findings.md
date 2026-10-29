@@ -8,6 +8,8 @@ All five original `/var/lib/rmtfs/` files in the desktop image were 2 MiB zero-f
 
 Two nonzero files from **this same device's Windows installation** were staged separately, retaining the original placeholders. Windows was mounted read-only and unmounted afterward. The staged files have not yet been boot-tested. This is a provisioning experiment, not proof of the cause of `DeviceNotReady`.
 
+The DriverStore provenance establishes the source of these boot files; it does not establish that they contain the device's current, fully provisioned calibration state. They may be initialization images rather than live EFS backups. Before the next isolated modem boot, their unchanged private hashes, sizes and access permissions were checked, as was the explicit GRUB test flag. Do not treat an unsuccessful seed-file test as justification to reset or overwrite radio NV/calibration.
+
 **Never copy another device's modem/EFS data.** No EFS payloads or device-specific hashes are published here. SC8180X IPA/RMNET host integration remains missing in the examined driver/tree, so a registered modem alone would still not establish data connectivity. See [#22](https://github.com/linux-surface/surface-pro-x/issues/22).
 
 ## Internal audio

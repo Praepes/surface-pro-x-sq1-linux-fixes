@@ -25,7 +25,7 @@
     "display": {
       "owner_confirmed_desktop_after_reboot": true,
       "dpms_driver_state_cycles": 2,
-      "repeated_suspend_resume": "pending"
+      "repeated_suspend_resume": "owner-confirmed recovery on current boot; longer-term testing remains"
     },
     "touch": {
       "owner_confirmed_finger_and_drag_before_final_rule": true,
@@ -45,9 +45,13 @@
       "build_completed": true,
       "identical_builtin_symbol_exports": 15487,
       "installed_separate_kernel": true,
-      "hardware_boot_and_resume": "boot passed; suspend/resume pending",
+      "hardware_boot_and_resume": "boot and s2idle recovery passed on current boot; longer-term validation remains",
       "hardware_boot": "passed; running build ID matches",
-      "hardware_suspend_resume": "pending"
+      "hardware_suspend_resume": "s2idle passed; physical screen/touch/Wi-Fi confirmed",
+      "s2idle_logged_complete_cycles": 2,
+      "previous_xhci_recovery_error_seen_after_test": false,
+      "all_pcie_devices_validated": false,
+      "deep_suspend_validated": false
     },
     "gpu": {
       "experimental": true,
@@ -61,7 +65,12 @@
       "request_online": "QMI DeviceNotReady (52)",
       "connectivity": "not working",
       "separate_device_local_efs_staged": true,
-      "efs_boot_test": "pending"
+      "efs_boot_test": "pending",
+      "post_resume_operating_mode": "factory-test",
+      "post_resume_registration": "not-registered",
+      "host_wwan_interface_present": false,
+      "test_entry_and_staged_file_integrity_checked": true,
+      "driverstore_files_are_verified_current_calibration_backups": false
     },
     "internal_audio": "not enabled; SQ1 integration remains",
     "camera": "not enabled; SQ1 integration remains",
@@ -72,6 +81,11 @@
       "stable_device_local_mac_config_staged": true,
       "configuration_boot_validation": "pending",
       "router_dhcp_reservation": "not configured by this task"
+    },
+    "power_key": {
+      "short_press_sleep_and_wake_owner_test": "passed",
+      "owner_screen_touch_wifi_recovery": true,
+      "observed_sleep_state": "s2idle"
     }
   },
   "running_kernel_build_id": "9d2b1e169016d3b069882defcf4d4c5c43e38fa9",
