@@ -2,7 +2,7 @@
 
 The supported controller enumerates as SPI HID `001C:045E:0C40.*`. The installed `iptsd@.service` binds to its hidraw device and stops when systemd no longer considers the device available.
 
-Replaying discovery initially started iptsd and restored touch, confirmed by the owner. A subsequent replay stopped it again. Inspection showed that the current udev tags had lost `systemd`, although the historical tags still listed it. The upstream rule probes with `iptsd-check-device`; probing an already-owned device does not reliably preserve that match. The local rule makes systemd membership depend on the identified controller rather than the result of that probe. The upstream rule and service are unchanged.
+Replaying discovery initially started iptsd and restored touch, confirmed by the owner. A subsequent replay stopped it again. Inspection showed that the current udev tags had lost `systemd`, although the historical tags still listed it. The upstream rule conditionally adds that tag after probing with `iptsd-check-device`. The evidence points to that conditional match during rediscovery; the probe's precise failure while iptsd owned the device was not separately instrumented. The local rule makes systemd membership depend on the identified controller rather than the result of that probe. The upstream rule and service are unchanged.
 
 On this exact board, after installing the rule, two successive discovery passes retained `systemd` in `CURRENT_TAGS`, retained `SYSTEMD_WANTS`, and left iptsd active. A new physical touch test and reboot persistence check remain pending.
 
