@@ -9,12 +9,12 @@ This is a repair journal, not a claim that every fitted device works. It disting
 | Change | Evidence | Remaining validation |
 | --- | --- | --- |
 | Display VSYNC clock shared-RCG backport | Patched module identified after reboot; owner confirmed desktop and screen after suspend/resume | Repeated cold/warm boot and longer-term testing |
-| Touch discovery and startup | Owner reports touch after reboot; stable udev tags survived; early iptsd `ENODEV` failures recovered with a later start; bounded retries added | Reboot test of retry addition and physical pen |
+| Touch discovery and startup | Owner previously confirmed touch; bounded retries automatically recovered iptsd after 6 restarts on recovery boot | More boot cycles and physical pen |
 | Power button → suspend | Action and initial wake confirmed; a later root-storage I/O failure remains open | Storage investigation before further suspend tests |
 | Hyprland 0.55 configuration migration | Configuration errors cleared; desktop usable | Normal ongoing use |
 | USB and PCIe GDSC retention | Candidate boot confirmed; initial wake succeeded, followed by owner-reported root-storage I/O failure | Not a stable suspend fix; investigate full USB storage path |
 | A680 GMEM alignment | Experimental module compiled; extracted test initramfs contains 474 real modules, correct GPU/display build IDs and boot-driver coverage | Candidate boot and pixel regression |
-| Wi-Fi changing identity | Driver's invalid-MAC/random fallback identified; a device-local stable-MAC workaround staged | Application after reboot; router reservation for a fixed IP |
+| Wi-Fi changing identity | Driver fallback identified; link rule selected on recovery boot but connected MAC still differs | Workaround not yet effective; trace address override/failure |
 
 See [build notes](docs/build-6.18.3.md), [boot testing](docs/boot-testing.md), [findings](docs/findings.md) and [rollback](docs/rollback.md). Candidate build checks do **not** establish hardware success.
 
