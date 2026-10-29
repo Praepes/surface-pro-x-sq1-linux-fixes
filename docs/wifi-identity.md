@@ -14,6 +14,8 @@ A device-local `.link` configuration pins the **currently working locally admini
 
 The file is installed on the device, but no network rediscovery, disconnect, or connection reactivation was performed. Its application at next boot is pending validation. The retained initramfs does not contain `ath10k_snoc`, so this interface is currently discovered after switching to the real root filesystem. If that boot arrangement changes, the configuration may also need to be included in the initramfs.
 
+Later recovery-boot check: udev selected the intended `.link` file, but the connected interface's actual MAC did **not** match its configured address. The workaround therefore has not achieved a stable connected identity and remains unresolved. The later override or set-address failure has not yet been traced; do not mark this workaround as hardware-validated. The storage incident takes priority.
+
 The [template](../systemd/10-spx-wifi-stable-mac.link.example) deliberately contains no usable shared address. Replace the placeholder with an address unique to your device, then install it as `/etc/systemd/network/10-spx-wifi-stable-mac.link`. Do not copy another machine's address. Record the chosen identity privately; actual MACs, SSIDs and local IPs are not published here.
 
 This is a persistent userspace workaround, not a recovery of the original factory MAC. It does not guarantee a fixed IP address. For a fixed address, reserve a DHCP lease for the stable MAC on the router. To undo the workaround, remove that device-local `.link` file before the next boot.

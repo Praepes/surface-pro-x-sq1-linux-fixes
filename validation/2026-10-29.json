@@ -35,7 +35,7 @@
       "physical_pen": "not available",
       "owner_reports_normal_touch_after_candidate_boot": true,
       "bounded_failure_restart_added": true,
-      "restart_dropin_reboot_validation": "pending"
+      "restart_dropin_reboot_validation": "automatic recovery confirmed on recovered display-only boot; 6 restarts, active"
     },
     "hyprland": {
       "version": "0.55.2",
@@ -79,7 +79,7 @@
       "invalid_mac_random_fallback_in_kernel_log": true,
       "dhcp_client_id_tracks_mac": true,
       "stable_device_local_mac_config_staged": true,
-      "configuration_boot_validation": "pending",
+      "configuration_boot_validation": "intended link file selected, but actual connected MAC differs; workaround not yet effective",
       "router_dhcp_reservation": "not configured by this task"
     },
     "power_key": {
@@ -107,7 +107,16 @@
         "USB PCIe + SQ1 modem files TEST",
         "display VSYNC fix"
       ],
-      "cold_power_cycle_result": "pending"
+      "cold_power_cycle_result": "display-only boot restored after enclosure power removal and USB-C port change; interventions not separated",
+      "current_root_after_recovery": "/dev/sda2",
+      "current_reported_failure_regions_readable": true,
+      "gpt_primary_and_backup_header_and_array_crcs": "passed",
+      "full_media_and_offline_ext4_check": "not performed",
+      "previous_boot_disconnect_trace_persisted": false,
+      "runtime_only_sleep_guard_installed": true,
+      "root_storage_driver": "usb-storage; existing quirk ignores UAS",
+      "root_usb_runtime_power_control": "on",
+      "root_cause_layer": "unresolved: USB controller/PHY, power, cable/port, or bridge state"
     }
   },
   "running_kernel_build_id": "9d2b1e169016d3b069882defcf4d4c5c43e38fa9",

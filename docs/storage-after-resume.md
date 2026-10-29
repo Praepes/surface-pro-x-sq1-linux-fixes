@@ -12,6 +12,16 @@ After restarting, both the modem-test and display-only entries also failed in GR
 
 A full shutdown and power removal from the external enclosure, followed by a direct connection to another Surface USB-C port, has been requested as a diagnostic cold-start step. Its result is pending. If EFI reads still fail afterward, inspect the enclosure/disk from another host without formatting, initializing or rewriting the partition table. Neither a failed sector read nor a successful cold start alone establishes the original cause or the health of all stored data.
 
+## Cold-start recovery result
+
+The owner performed the combined power-removal/port-change step and successfully booted the display-only entry. SSH returned; root is again `/dev/sda2`, ext4 mounted read/write. `su` and `ls` execute normally. Read-only raw-disk checks now read sector zero, the reported failure regions and the backup-GPT area successfully. Both primary and backup GPT header and partition-array CRCs pass. This does not substitute for a full-media test or offline ext4 check.
+
+The previous boot used USB path `4-1`, while the recovered boot uses `6-1`. Because both enclosure power and port changed, recovery cannot be attributed to either intervention alone. The observed chain strongly supports a recoverable USB-storage path/bridge state problem, but the triggering layer remains unresolved. The root disk already uses `usb-storage`, with UAS ignored by the existing kernel quirk, and its runtime power control is `on`; neither disabling UAS nor disabling runtime autosuspend is a newly demonstrated fix here.
+
+The previous persistent kernel journal ends immediately after the successful resume and Wi-Fi association. It contains legacy DWC3 HS-PHY-not-in-L2 warnings, but no saved trace of the later disconnect. That warning alone is insufficient to identify the cause. Future reproduction needs a remote log sink and a boot arrangement that does not depend on the device being tested for its root filesystem.
+
+Sleep-related targets are now masked **at runtime only** on the recovered boot. This protects the active USB root while investigation continues; it automatically expires at reboot. No filesystem repair, USB-controller reset or additional suspend was performed. The boot-menu and repair configurations were backed up privately to the Windows workspace.
+
 Do not claim that the retention backport proves stable USB-root suspend. It addresses one controller-state problem; it does not establish continued root-filesystem availability, bridge behavior or storage correctness after wake. The earlier physical recovery observations remain valid but are insufficient for overall acceptance.
 
 ## Evidence and recovery priorities
