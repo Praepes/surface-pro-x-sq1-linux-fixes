@@ -1,0 +1,12 @@
+[Unit]
+Description=Replay HID discovery for Surface touch after switching from initramfs
+After=systemd-udev-trigger.service systemd-udevd.service local-fs.target
+ConditionPathExists=/usr/bin/iptsd-check-device
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/udevadm trigger --action=add --subsystem-match=hidraw
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

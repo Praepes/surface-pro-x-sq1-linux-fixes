@@ -1,0 +1,17 @@
+# Device data and generated artifacts must stay local.
+*.ko
+*.img
+*.mbn
+*.bin
+*.dat
+*.log
+*.tar.*
+*.pem
+*.key
+modem_fs*
+modem_fsg
+modem_tuning
+device-known-hosts
+research/
+private/
+__pycache__/

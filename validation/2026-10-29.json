@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-29",
+  "hardware": "Surface Pro X SQ1",
+  "kernel_release": "6.18.3-1-surface+",
+  "candidate_booted": false,
+  "candidate_boot_driver_coverage": {
+    "CONFIG_USB_UAS": "built-in",
+    "CONFIG_USB_STORAGE": "built-in",
+    "CONFIG_USB_XHCI_HCD": "built-in",
+    "CONFIG_USB_DWC3": "built-in",
+    "CONFIG_USB_DWC3_QCOM": "built-in",
+    "CONFIG_PHY_QCOM_USB_SNPS_FEMTO_V2": "built-in",
+    "CONFIG_EXT4_FS": "built-in"
+  },
+  "candidate_regular_module_count": 474,
+  "candidate_module_build_ids": {
+    "msm.ko": "edd88afcdfcd9d0efa240f40997173dc8b957378",
+    "dispcc-sm8250.ko": "2d84ebacadaf3304cbca2ca8e01a9a1c3acb3986"
+  },
+  "candidate_raw_image_sha256": "e4b0d87db1b897cfa48a04fb2ccefdcbfe90bfa45cea4f70c5c96b93ab436351",
+  "touch_service_active": true,
+  "touch_discovery_service_enabled": true,
+  "power_key_effective": "s \"suspend\"",
+  "validation": {
+    "display": {
+      "owner_confirmed_desktop_after_reboot": true,
+      "dpms_driver_state_cycles": 2,
+      "repeated_suspend_resume": "pending"
+    },
+    "touch": {
+      "owner_confirmed_finger_and_drag_before_final_rule": true,
+      "final_rule_repeated_discovery_kept_service_active": true,
+      "final_rule_physical_recheck": "pending",
+      "reboot_persistence": "pending",
+      "physical_pen": "not available"
+    },
+    "hyprland": {
+      "version": "0.55.2",
+      "configuration_errors_cleared": true
+    },
+    "usb_pcie": {
+      "build_completed": true,
+      "identical_builtin_symbol_exports": 15487,
+      "installed_separate_kernel": true,
+      "hardware_boot_and_resume": "pending"
+    },
+    "gpu": {
+      "experimental": true,
+      "build_completed": true,
+      "initramfs_verified": true,
+      "hardware_pixel_regression": "pending"
+    },
+    "lte": {
+      "sim_application_ready": true,
+      "operating_mode": "factory-test",
+      "request_online": "QMI DeviceNotReady (52)",
+      "connectivity": "not working",
+      "separate_device_local_efs_staged": true,
+      "efs_boot_test": "pending"
+    },
+    "internal_audio": "not enabled; SQ1 integration remains",
+    "camera": "not enabled; SQ1 integration remains",
+    "external_display": "not enabled; backport integration remains"
+  }
+}

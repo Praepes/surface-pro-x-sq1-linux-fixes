@@ -1,0 +1,24 @@
+--- a/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
++++ b/drivers/gpu/drm/msm/adreno/a6xx_gpu.c
+@@ -1267,7 +1267,9 @@
+ 	if (!(adreno_is_a650_family(adreno_gpu) ||
+ 	      adreno_is_a702(adreno_gpu) ||
+ 	      adreno_is_a730(adreno_gpu))) {
+-		gmem_range_min = adreno_is_a740_family(adreno_gpu) ? SZ_16M : SZ_1M;
++		/* A680 texture addressing requires a base aligned to its 2 MiB GMEM. */
++		gmem_range_min = adreno_is_a680(adreno_gpu) ? SZ_2M :
++			(adreno_is_a740_family(adreno_gpu) ? SZ_16M : SZ_1M);
+ 
+ 		/* Set the GMEM VA range [0x100000:0x100000 + gpu->gmem - 1] */
+ 		gpu_write64(gpu, REG_A6XX_UCHE_GMEM_RANGE_MIN, gmem_range_min);
+--- a/drivers/gpu/drm/msm/adreno/adreno_gpu.c
++++ b/drivers/gpu/drm/msm/adreno/adreno_gpu.c
+@@ -372,7 +372,7 @@
+ 		    adreno_is_a740_family(adreno_gpu))
+ 			*value = 0;
+ 		else
+-			*value = 0x100000;
++			*value = adreno_is_a680(adreno_gpu) ? 0x200000 : 0x100000;
+ 		return 0;
+ 	case MSM_PARAM_CHIP_ID:
+ 		*value = adreno_gpu->chip_id;

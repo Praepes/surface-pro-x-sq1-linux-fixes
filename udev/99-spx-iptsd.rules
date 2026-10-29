@@ -1,0 +1,3 @@
+# The 045E:0C40 SPI HID is this board's supported touch controller.
+# Keep systemd membership stable even when iptsd already owns the device.
+SUBSYSTEM=="hidraw", KERNELS=="001C:045E:0C40.*", TAG+="systemd", ENV{SYSTEMD_WANTS}+="iptsd@dev-%k.service"
