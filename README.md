@@ -7,15 +7,16 @@ This is a repair journal, not a claim that every fitted device works. It disting
 | Change | Evidence | Remaining validation |
 | --- | --- | --- |
 | Display VSYNC clock shared-RCG backport | Patched module identified after reboot; owner confirmed desktop; two DPMS state cycles completed | Repeated cold/warm boot and suspend |
-| Touch discovery and stable udev tagging | Owner confirmed finger touch and dragging; a later rediscovery stop was traced and corrected; repeated discovery now keeps `iptsd` active | Physical recheck after final rule, boot persistence and physical pen |
+| Touch discovery and startup | Owner reports touch after reboot; stable udev tags survived; early iptsd `ENODEV` failures recovered with a later start; bounded retries added | Reboot test of retry addition and physical pen |
 | Power button → suspend | logind configuration and effective D-Bus value checked | Resume with the new kernel |
 | Hyprland 0.55 configuration migration | Configuration errors cleared; desktop usable | Normal ongoing use |
-| USB and PCIe GDSC retention | Backport compiled; kernel configuration and all 15,487 built-in symbol exports checked | Candidate boot and actual suspend/resume |
+| USB and PCIe GDSC retention | Compiled and booted; running GNU build ID matches candidate; owner confirms normal screen and touch | Actual suspend/resume and repeated boot cycles |
 | A680 GMEM alignment | Experimental module compiled; extracted test initramfs contains 474 real modules, correct GPU/display build IDs and boot-driver coverage | Candidate boot and pixel regression |
+| Wi-Fi changing identity | Driver's invalid-MAC/random fallback identified; a device-local stable-MAC workaround staged | Application after reboot; router reservation for a fixed IP |
 
 See [build notes](docs/build-6.18.3.md), [boot testing](docs/boot-testing.md), [findings](docs/findings.md) and [rollback](docs/rollback.md). Candidate build checks do **not** establish hardware success.
 
-The [dated validation record](validation/2026-10-29.json) records exact completed checks. For the touch fix, install both the local udev rule and discovery service using [these instructions](docs/touch.md).
+The [dated validation record](validation/2026-10-29.json) records exact completed checks. For the touch fix, install the local udev rule, discovery service and bounded retry drop-in using [these instructions](docs/touch.md). See also [Wi-Fi identity findings](docs/wifi-identity.md).
 
 ## Scope and provenance
 

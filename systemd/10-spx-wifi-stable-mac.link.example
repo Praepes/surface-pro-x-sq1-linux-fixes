@@ -1,0 +1,10 @@
+# Replace the placeholder with a unique address for YOUR device before use.
+[Match]
+Driver=ath10k_snoc
+Path=platform-18800000.wifi
+Type=wlan
+
+[Link]
+NamePolicy=keep kernel
+MACAddressPolicy=none
+MACAddress=REPLACE_WITH_DEVICE_LOCAL_ADDRESS

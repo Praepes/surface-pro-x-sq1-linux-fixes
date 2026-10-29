@@ -4,7 +4,7 @@ These names describe the test installation; the paths are not an installer for o
 
 | Menu entry | Purpose | Status on 2026-10-29 |
 | --- | --- | --- |
-| Surface Linux - USB PCIe resume fix | New kernel, previous verified VSYNC initramfs; default entry | Built and installed, not booted |
+| Surface Linux - USB PCIe resume fix | New kernel, previous verified VSYNC initramfs; default entry | Booted; running build ID matches candidate; owner confirms screen/touch; suspend pending |
 | Surface Linux - USB PCIe + SQ1 modem files TEST | Same kernel, explicitly selects this device's staged modem files | Not booted; no claim of LTE connectivity |
 | Surface Linux - USB PCIe + A680 GPU TEST | New kernel and separate verified experimental GPU initramfs | Not booted |
 | Surface Linux - display VSYNC fix | Previous kernel plus VSYNC module backport | Owner confirmed normal desktop after reboot |
@@ -13,5 +13,7 @@ These names describe the test installation; the paths are not an installer for o
 The GPU and modem tests are separate so a failure can be attributed to the tested change. Neither is silently enabled by the ordinary USB/PCIe entry.
 
 Save desktop work before rebooting. First boot the USB/PCIe entry, check the patched kernel and retained display module, verify touch, then test one suspend/resume cycle. Reaching SSH alone does not prove that the physical screen resumed. Check the screen, touch, USB root storage and logs together. Repeat warm/cold boot and several resume cycles before promoting a candidate to hardware-validated status.
+
+The first candidate boot was checked on 2026-10-29: running kernel build ID `9d2b1e169016d3b069882defcf4d4c5c43e38fa9` matches the compiled vmlinux. The loaded display module retains build ID `2d84ebacadaf3304cbca2ca8e01a9a1c3acb3986`. The GPU remains the original module, as intended for this entry. This confirms candidate boot, not suspend success. See the touch notes for the additional early-start failure observed during this boot.
 
 If a candidate fails, return to the display-only entry, then the original recovery entry if needed. The test installation also has a private backup of its previous boot configuration and a local rollback script. No remote reboot was performed during publication.

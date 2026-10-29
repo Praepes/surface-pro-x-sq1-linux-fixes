@@ -2,7 +2,7 @@
   "date": "2026-10-29",
   "hardware": "Surface Pro X SQ1",
   "kernel_release": "6.18.3-1-surface+",
-  "candidate_booted": false,
+  "candidate_booted": true,
   "candidate_boot_driver_coverage": {
     "CONFIG_USB_UAS": "built-in",
     "CONFIG_USB_STORAGE": "built-in",
@@ -30,9 +30,12 @@
     "touch": {
       "owner_confirmed_finger_and_drag_before_final_rule": true,
       "final_rule_repeated_discovery_kept_service_active": true,
-      "final_rule_physical_recheck": "pending",
-      "reboot_persistence": "pending",
-      "physical_pen": "not available"
+      "final_rule_physical_recheck": "owner reports normal touch after reboot; early daemon failures separately observed",
+      "reboot_persistence": "udev tags survived; early iptsd ENODEV; late start succeeds",
+      "physical_pen": "not available",
+      "owner_reports_normal_touch_after_candidate_boot": true,
+      "bounded_failure_restart_added": true,
+      "restart_dropin_reboot_validation": "pending"
     },
     "hyprland": {
       "version": "0.55.2",
@@ -42,7 +45,9 @@
       "build_completed": true,
       "identical_builtin_symbol_exports": 15487,
       "installed_separate_kernel": true,
-      "hardware_boot_and_resume": "pending"
+      "hardware_boot_and_resume": "boot passed; suspend/resume pending",
+      "hardware_boot": "passed; running build ID matches",
+      "hardware_suspend_resume": "pending"
     },
     "gpu": {
       "experimental": true,
@@ -60,6 +65,17 @@
     },
     "internal_audio": "not enabled; SQ1 integration remains",
     "camera": "not enabled; SQ1 integration remains",
-    "external_display": "not enabled; backport integration remains"
-  }
+    "external_display": "not enabled; backport integration remains",
+    "wifi_identity": {
+      "invalid_mac_random_fallback_in_kernel_log": true,
+      "dhcp_client_id_tracks_mac": true,
+      "stable_device_local_mac_config_staged": true,
+      "configuration_boot_validation": "pending",
+      "router_dhcp_reservation": "not configured by this task"
+    }
+  },
+  "running_kernel_build_id": "9d2b1e169016d3b069882defcf4d4c5c43e38fa9",
+  "running_kernel_matches_built_candidate": true,
+  "running_display_build_id": "2d84ebacadaf3304cbca2ca8e01a9a1c3acb3986",
+  "running_gpu_build_id": "f0a0a0e03f156a3a6ad669080112cd31966e26cd"
 }
