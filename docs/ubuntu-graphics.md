@@ -63,6 +63,17 @@ Comparing the packaged Mesa policy files found no GTK-specific Turnip rule
 that explains the Arch/Ubuntu difference. This does not rule out other driver,
 build or userspace differences.
 
+The 05:30 follow-up made a read-only DRM parameter query on this device:
+GMEM size was 2 MiB, its reported base was 1 MiB, and the GPU fault counter was
+zero. This matches the configuration discussed by the already recorded
+[experimental A680 alignment patch](https://github.com/denysvitali/linux-surface/commit/44e2749dfbaa0ecc669ffa39ae3fa6822be31ad4).
+It strengthens that candidate but does not prove the GTK failure shares its
+cause. A booted patched-kernel comparison is still missing; no live DRM driver
+replacement or unattended reboot was performed.
+
+See the [05:30 validation follow-up](ubuntu-validation-0530.md) for the separate
+image consistency and CPU media checks, including a missing H.264 dependency.
+
 ## Mitigation and separate extension correction
 
 For one GTK application:

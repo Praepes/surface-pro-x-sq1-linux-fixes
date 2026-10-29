@@ -1,0 +1,38 @@
+{
+  "tested_date": "2026-10-30",
+  "start_time_hkt": "05:30",
+  "scope": "Read-only actual image checks and ARM64 QEMU-user CPU media, not full image boot or hardware codec acceptance",
+  "static_checks": {
+    "passed": 37,
+    "failed": 0
+  },
+  "custom_touch_units_verified": 5,
+  "initial_media": {
+    "cases": 16,
+    "passed": 12,
+    "failed_harness_input": 1,
+    "h264_unavailable_cases": 3
+  },
+  "vorbis_corrected_harness_passed": true,
+  "addon": {
+    "new_packages": 56,
+    "upgraded_packages": 0,
+    "removed_packages": 0,
+    "deb_archive_bytes": 52861162,
+    "dpkg_audit_empty": true,
+    "installer_preflight_passed": true,
+    "h264_cases": 6,
+    "h264_frames": 72,
+    "h264_maximum_sampled_channel_error": 2,
+    "sha256": "b6b492d4131d7cba7f9a37381894713fddcb1d21cb641b3f4475b4d1f59bab40",
+    "compressed_bytes": 52831678
+  },
+  "read_only_gpu_query": {
+    "gpu_id": 680,
+    "gmem_size": 2097152,
+    "gmem_base": 1048576,
+    "fault_counter": 0
+  },
+  "gmem_patched_kernel_booted": false,
+  "preview2_image_modified": false
+}
