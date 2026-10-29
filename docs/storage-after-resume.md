@@ -33,3 +33,13 @@ Do not claim that the retention backport proves stable USB-root suspend. It addr
 * Keep display-only and original recovery payloads available. They are boot-recovery options, not known-safe suspend alternatives.
 
 Disabling runtime autosuspend is not equivalent to preventing system-suspend power loss. Do not present a blanket `usbcore.autosuspend=-1`, a guessed UAS quirk or a live USB-controller reset as a demonstrated correction. Further changes require evidence from this incident.
+
+## Related upstream reports and persistence check
+
+[Surface Pro X suspend tracking issue #29](https://github.com/linux-surface/surface-pro-x/issues/29) records USB PHY power-state warnings and an xHC error after PCIe suspend work in 2022. A March 2026 comment links the SC8180X power-management series that retains PCIe/USB register state. This is a directly relevant platform report, but does not establish an identical Arion root-disk failure or a complete fix for this incident.
+
+The upstream [USB GDSC retention change, 25bc96f](https://github.com/torvalds/linux/commit/25bc96f26cd6c19dde13a0b9859183e531d6fbfc), explicitly addresses USB state loss during suspend, with xHC resume errors and root-hub reset/power-loss messages. That change is already included in our candidate backport. Its presence and the absence of the earlier xHC error do not establish that every device below the controller remains usable.
+
+The kernel's [USB persistence documentation](https://docs.kernel.org/driver-api/usb/persist.html) explains why interrupting a USB power session can invalidate an existing mounted filesystem, especially a USB root. USB-persist attempts reset/re-enumeration while retaining the original kernel device, subject to successful recovery and identity checks. A fresh block-device instance does not by itself restore the old root mount.
+
+Read-only inspection on the recovered, display-only boot found `power/persist=1`, `power/control=on`, and the `usb-storage` driver on the Arion at 10 Gbit/s. These are current-boot observations, not a capture of the failed boot's attributes. Enabling persistence or disabling UAS is therefore not a newly established solution. No additional suspend or USB reset was performed. Distinguish system suspend, runtime autosuspend, actual electrical power loss, host reset and bridge malfunction; the available evidence does not identify which initiated this incident.
