@@ -100,7 +100,14 @@
       "inference": "strong evidence for USB-storage removal and re-enumeration; original mount retains failed block-device instance",
       "transport_trigger": "not yet established",
       "ssh_banner_exchange": "failed on last attempt",
-      "lte_testing": "paused"
+      "lte_testing": "paused",
+      "after_restart_grub_efi_sector_read_failure_owner_report": true,
+      "grub_sector_zero_read_failure_owner_report": true,
+      "affected_boot_entries": [
+        "USB PCIe + SQ1 modem files TEST",
+        "display VSYNC fix"
+      ],
+      "cold_power_cycle_result": "pending"
     }
   },
   "running_kernel_build_id": "9d2b1e169016d3b069882defcf4d4c5c43e38fa9",
