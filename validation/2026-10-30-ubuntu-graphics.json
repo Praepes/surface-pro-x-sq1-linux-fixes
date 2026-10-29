@@ -1,0 +1,98 @@
+{
+  "tested_date": "2026-10-30",
+  "scope": "Native SQ1 RAM-container userspace graphics, not full image boot or physical panel acceptance",
+  "kernel": "6.18.3-1-surface+",
+  "completed_harness_cases": 79,
+  "screenshots": 158,
+  "visual_difference_flagged_cases": 13,
+  "groups": {
+    "ubuntu/vulkan/1x": {
+      "cases": 4,
+      "visual_difference_flags": 2
+    },
+    "arch/vulkan/1x": {
+      "cases": 4,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/default/1x": {
+      "cases": 3,
+      "visual_difference_flags": 3
+    },
+    "arch/default/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/sysmem/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "arch/sysmem/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/gl/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "arch/gl/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/software/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "arch/software/1x": {
+      "cases": 3,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/default/2x": {
+      "cases": 1,
+      "visual_difference_flags": 1
+    },
+    "arch/default/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/sysmem/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/gl/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/software/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "arch/software/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/mesa261/2x": {
+      "cases": 1,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/default/mesa-ab": {
+      "cases": 8,
+      "visual_difference_flags": 6
+    },
+    "ubuntu/mesa261/mesa-ab": {
+      "cases": 8,
+      "visual_difference_flags": 1
+    },
+    "ubuntu/gl/2x-extended": {
+      "cases": 12,
+      "visual_difference_flags": 0
+    },
+    "ubuntu/sysmem/2x-extended": {
+      "cases": 12,
+      "visual_difference_flags": 0
+    }
+  },
+  "quantitative_flag": "fraction pixels with max-channel delta >32 exceeds 0.001 versus same-client software reference; transient notification region excluded",
+  "root_cause_fixed": false,
+  "mitigation": "GSK_RENDERER=gl; per-process Vulkan TU_DEBUG=sysmem also tested",
+  "new_ubuntu_kernel_or_gdm_login_tested": false
+}

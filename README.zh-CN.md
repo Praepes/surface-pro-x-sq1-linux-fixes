@@ -21,3 +21,5 @@
 [编译说明](docs/build-6.18.3.md) · [回退说明](docs/rollback.md) · [上游出处](README.md#scope-and-provenance)
 
 [本次验证记录](validation/2026-10-29.json) · [触摸修复安装步骤](docs/touch.md)
+
+Ubuntu 后续：[原生图形对照记录](docs/ubuntu-graphics.md) 已复现 GTK/Vulkan 花屏，附 OpenGL 缓解配置及测试源码；完整 Ubuntu 镜像启动仍未验收。

@@ -34,3 +34,5 @@ Original patch authors retain attribution. Backports here are not new upstream f
 Only source patches, configuration and sanitized notes are published. Device-specific modem/EFS data, Windows firmware, passwords and raw private logs are excluded.
 
 License: GPL-2.0-only, except where individual upstream files specify otherwise.
+
+Ubuntu follow-up: [native SQ1 graphics comparisons](docs/ubuntu-graphics.md) reproduce GTK Vulkan corruption; a tested OpenGL mitigation and source-only validation fixtures are included. Complete Ubuntu image boot remains unverified.
