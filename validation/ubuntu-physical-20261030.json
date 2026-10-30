@@ -403,5 +403,7 @@
     "hardware_video_decode": "Not validated; Firefox reports unavailable"
   },
   "reboot_or_suspend_performed": false,
-  "temporary_test_cleanup_completed": true
+  "temporary_test_cleanup_completed": true,
+  "owner_feedback_native_firefox": "Slight subjective improvement; not a claim that all lag is fixed",
+  "next_priority": "LTE initialization and SC8180X host data path"
 }

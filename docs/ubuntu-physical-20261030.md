@@ -25,6 +25,8 @@ CPU 0–3 capacity=355、最高 1.7664GHz，CPU 4–7 capacity=1024、最高 2.9
 
 安装的新原生 Firefox 159.0 测得 **1.970、1.169 秒**。第二轮虽然成功启动和导航，但渲染回调超时，原失败记录保留；增加可见性记录和 8 秒截止后的一次补测完成 120 个帧间隔，页面可见、启动就绪 **1.933 秒**。原超时原因尚未证实，不能据一次补测宣布不存在图形问题。
 
+机主随后反馈主观上感觉略有改善，没有将其判定为所有启动卡顿已经修复。后续优先项目为 LTE，见 [当前阻塞点](lte-status.md)。
+
 这些时间是**进程启动到自动化接口就绪**，不是物理点击到屏幕显示的延迟。测试使用独立资料目录和本地静态测试页；没有修改用户的 Firefox 性能偏好或关闭浏览器沙箱。测试页的 requestAnimationFrame 间隔也不等同于整桌面或面板实际扫描帧率。
 
 GTK GL 简单测试窗口的首次 after-paint 约 782–861 毫秒，已构建页面切换约 10.7–14.9 毫秒。Firefox 154 本地页面首次内容绘制约 64–104 毫秒。存储只做了现有 GTK 库的 192 次 4KiB 只读直接随机读取：中位数 0.204ms、p95 0.792ms；这不是完整磁盘或冷启动基准。当前数据更支持应用初始化存在开销，不能据此证明所有应用、网页或设备无卡顿。
@@ -46,6 +48,8 @@ GTK GL 简单测试窗口的首次 after-paint 约 782–861 毫秒，已构建�
 蓝牙源码为 `scripts/spx-bluetooth-address`，安装路径 `/usr/local/libexec/spx-bluetooth-address`（755）；对应两个 unit 在 systemd/、规则在 udev/。只匹配 Surface 的 c8c000.serial 控制器，已配置的控制器不改地址。安装后 reload systemd 和 udev、enable spx-bluetooth-discover.service。设备地址由各机器自行生成，绝不共用本机地址。当前控制器开启与扫描通过，开机自动配置尚未重启验收。
 
 AppArmor 提示服务的修复是在用户 unit 的 drop-in 添加 `ConditionPathExists=/sys/kernel/security/apparmor/.notify`，仅跳过不受内核支持的可选提示进程，保持 AppArmor 本身启用。
+
+完整文件位置、安装前提及回退说明见 [Ubuntu 修复文件索引](ubuntu-repairs.md)。对应的触摸 initramfs hook、权限提示 drop-in 和启动测量脚本已随本轮记录提交。
 
 触摸回退为删除对应 updates/spx/spi-hid.ko 和 initramfs hook、depmod，然后恢复备份的原 initramfs，在正常关机后的下一次启动生效。蓝牙回退为 disable discover unit、移除新 helper/unit/udev 规则并 reload。不要在 USB 根盘上用睡眠验证回退。原生 Firefox 来自签名 Mozilla APT 源，旧 Snap 与原资料仍保留，可通过 `snap run firefox` 使用。
 

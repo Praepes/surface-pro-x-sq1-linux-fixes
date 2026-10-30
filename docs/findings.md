@@ -2,6 +2,8 @@
 
 ## Cellular
 
+**Ubuntu update, 2026-10-30:** physical USB-root Ubuntu now boots GNOME, but cellular remains unavailable. The fitted SIM is ready, online still returns QMI 52 DeviceNotReady, and there is no cellular data port. The current Ubuntu image retains placeholder RMTFS files; the separately staged earlier Arch files have not established provisioning success. See the [current LTE blockers and acceptance criteria](lte-status.md). No modem reset or NV write was performed.
+
 The fitted SIM is readable and its application reports `ready`. The modem responds through QRTR, but reports `factory-test`; requesting `online` returns QMI `DeviceNotReady`. There is no cellular network interface.
 
 All five original `/var/lib/rmtfs/` files in the desktop image were 2 MiB zero-filled placeholders. The [upstream Wi-Fi setup](https://github.com/linux-surface/surface-pro-x/wiki/WiFi) explicitly describes this workaround. [Issue #2](https://github.com/linux-surface/surface-pro-x/issues/2) discusses real EFS access and the Windows driver's `bootmodem_fs1`/`bootmodem_fs2` files.

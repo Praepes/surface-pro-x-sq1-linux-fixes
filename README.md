@@ -1,10 +1,28 @@
 # Surface Pro X SQ1 Linux fixes
 
-Backports, configuration fixes and validation notes for **Surface Pro X SQ1**, running the Arch Linux ARM desktop image with `6.18.3-1-surface+`.
+Backports, configuration fixes and hardware validation notes for **Surface Pro X SQ1**. The current device runs **Ubuntu 26.04.1 ARM64 / GNOME with `6.18.3-sq1-ubuntu1` from an external USB drive**. Earlier Arch Linux ARM tests with `6.18.3-1-surface+` are preserved separately.
 
 This is a repair journal, not a claim that every fitted device works. It distinguishes hardware tests, build checks and work that remains experimental. [中文说明](README.zh-CN.md)
 
-**Open storage failure:** after the initial successful wake observations, the owner reported that even `/usr/bin/ls /` returned an I/O error with a normal PATH, and SSH stopped completing its handshake. The external USB root filesystem is no longer reliably readable. Suspend/resume must not be treated as stable. USB disconnect, bridge recovery, disk and filesystem causes remain to be distinguished; see [incident notes](docs/storage-after-resume.md). LTE testing is paused.
+## Current Ubuntu status — 2026-10-30
+
+| Component | Evidence and limits |
+| --- | --- |
+| USB-root boot, GNOME and Wi-Fi | Physical SQ1 boot and login verified; current root filesystem reads/writes normally |
+| Finger touch | Backported SPI HID fixes; owner confirmed click/drag, driver errors and iptsd restarts remain zero |
+| Bluetooth | Address configuration allows power-on and nearby discovery; pairing/audio untested |
+| Repair persistence | Module, initramfs, udev and systemd configuration installed and checked; not reboot-validated |
+| Application startup | Big-core-only tests showed no consistent benefit. Native Firefox started faster than the same Snap version; Mozilla APT build installed and Dock updated. Owner reports a slight subjective improvement |
+| Desktop graphics | Animations enabled, GTK OpenGL mitigation retained; one Firefox render-callback timeout remains recorded despite a successful bounded retest |
+| LTE | **Not fixed**: factory-test mode, DeviceNotReady on online request, no cellular net port; see [LTE status](docs/lte-status.md) |
+| Internal audio, microphone and cameras | Unavailable; board driver/device-tree integration remains missing |
+| USB-root suspend/resume | **Unresolved; sleep remains disabled.** No suspend or reboot during this round |
+
+[Physical report](docs/ubuntu-physical-20261030.md) · [Installation and rollback](docs/ubuntu-repairs.md) · [Sanitized results](validation/ubuntu-physical-20261030.json) · [Probe source](validation/ubuntu-startup/README.md)
+
+## Earlier Arch tests
+
+Suspend/resume previously caused root I/O errors, USB disk re-enumeration and SSH handshake failure; a complete power cycle restored boot. This remains unresolved. A currently readable Ubuntu root does not establish working suspend/resume. See [incident notes](docs/storage-after-resume.md). The table below describes the earlier Arch environment, not Ubuntu acceptance.
 
 | Change | Evidence | Remaining validation |
 | --- | --- | --- |
@@ -35,4 +53,4 @@ Only source patches, configuration and sanitized notes are published. Device-spe
 
 License: GPL-2.0-only, except where individual upstream files specify otherwise.
 
-Ubuntu follow-up: [native SQ1 graphics comparisons](docs/ubuntu-graphics.md) reproduce GTK Vulkan corruption; a tested OpenGL mitigation and source-only validation fixtures are included. The complete Ubuntu USB-root image now boots GNOME on physical SQ1. Touch backport and Bluetooth configuration work live; their boot persistence is staged but not reboot-tested. See [physical fixes and Firefox startup comparison](docs/ubuntu-physical-20261030.md). Audio, cameras, LTE and USB-root suspend/resume remain unresolved.
+Graphics history: [native SQ1 graphics comparisons](docs/ubuntu-graphics.md) document GTK Vulkan corruption, the OpenGL mitigation and earlier validation fixtures.
