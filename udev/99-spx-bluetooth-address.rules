@@ -1,0 +1,1 @@
+SUBSYSTEM=="bluetooth", KERNEL=="hci[0-9]*", KERNELS=="c8c000.serial", TAG+="systemd", ENV{SYSTEMD_WANTS}+="spx-bluetooth-address@%k.service"

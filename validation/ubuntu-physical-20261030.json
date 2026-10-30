@@ -1,0 +1,407 @@
+{
+  "recorded_utc": "2026-10-30T03:15:59.663881+00:00",
+  "target": "Surface Pro X SQ1, actual Ubuntu USB-root boot",
+  "kernel": "6.18.3-sq1-ubuntu1",
+  "baseline_image": "preview3-complete",
+  "baseline_image_bytes_changed": false,
+  "physical_boot_and_gnome_login_verified": true,
+  "touch": {
+    "baseline_worked": false,
+    "backport_module_version": "20261030.cfcaa144.backport1",
+    "upstream_commit": "cfcaa144842c79bd11cc343de38ca5536f8adcee",
+    "module_sha256": "702f045a52d33f276d4de00f9e070a57016f217beca2704ed0ed5c173353ecf9",
+    "ready": true,
+    "iptsd_restarts_since_backport": 0,
+    "bus_errors_since_backport": 0,
+    "user_confirmed_click_drag": true,
+    "stylus_physically_tested": false,
+    "persistence_staged_in_initramfs": true,
+    "reboot_verification": false
+  },
+  "bluetooth": {
+    "baseline_config_missing": "public-address",
+    "stable_per_device_generated_address": true,
+    "controller_powered": true,
+    "nearby_discovery_passed": true,
+    "pairing_tested": false,
+    "boot_persistence_installed": true,
+    "reboot_verification": false
+  },
+  "desktop": {
+    "animations_enabled": true,
+    "cpu_governor": "performance",
+    "cpu_big_cores": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "big_core_capacity": 1024,
+    "small_core_capacity": 355,
+    "scheduler_policy_changed": false,
+    "persistent_cpu_affinity_changed": false
+  },
+  "snap_prompting": {
+    "baseline_failure": "AppArmor notification socket required by optional prompting listener absent",
+    "conditional_start_guard_installed": true,
+    "apparmor_still_enabled": true,
+    "loaded_profiles_at_check": 238,
+    "user_service_failed_after_guard": false
+  },
+  "firefox_snap_154": [
+    {
+      "run": 1,
+      "automation_ready_seconds": 3.492,
+      "session_ready_seconds": 9.846,
+      "local_navigation_seconds": 0.144,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "25.2.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 78
+        }
+      ],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 16.54,
+        "p95": 17.28,
+        "max": 17.36
+      }
+    },
+    {
+      "run": 2,
+      "automation_ready_seconds": 2.47,
+      "session_ready_seconds": 7.2,
+      "local_navigation_seconds": 0.16,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "25.2.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 104
+        }
+      ],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 17.04,
+        "p95": 17.16,
+        "max": 17.34
+      }
+    }
+  ],
+  "firefox_cpu_ab": [
+    {
+      "run": 1,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 3.432,
+      "session_ready_seconds": 9.494
+    },
+    {
+      "run": 2,
+      "affinity": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 2.569,
+      "session_ready_seconds": 7.239
+    },
+    {
+      "run": 3,
+      "affinity": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 2.699,
+      "session_ready_seconds": 8.066
+    },
+    {
+      "run": 4,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 2.446,
+      "session_ready_seconds": 7.278
+    }
+  ],
+  "firefox_native_154_comparison": [
+    {
+      "run": 1,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 1.849,
+      "session_ready_seconds": 5.384,
+      "local_navigation_seconds": 0.084,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "26.0.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 66
+        }
+      ],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 16.64,
+        "p95": 17.24,
+        "max": 17.28
+      }
+    },
+    {
+      "run": 2,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 1.17,
+      "session_ready_seconds": 3.188,
+      "local_navigation_seconds": 0.09,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "26.0.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 64
+        }
+      ],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 17.02,
+        "p95": 17.26,
+        "max": 17.52
+      }
+    }
+  ],
+  "firefox_native_159_installed": [
+    {
+      "run": 1,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 1.97,
+      "session_ready_seconds": 5.22,
+      "local_navigation_seconds": 0.112,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "26.0.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 92
+        }
+      ],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 17.0,
+        "p95": 19,
+        "max": 50.0
+      }
+    },
+    {
+      "run": 2,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 1.169,
+      "session_ready_seconds": 2.868,
+      "local_navigation_seconds": 0.249,
+      "error": "timed out",
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "26.0.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [],
+      "visibility": "not recorded in original harness",
+      "render_callback_result": "not recorded in original harness"
+    }
+  ],
+  "firefox_native_159_bounded_retest": [
+    {
+      "run": 1,
+      "affinity": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "automation_ready_seconds": 1.933,
+      "session_ready_seconds": 4.895,
+      "local_navigation_seconds": 0.108,
+      "graphics": {
+        "windowLayerManagerType": "WebRender",
+        "numAcceleratedWindows": 1,
+        "adapterDescription": "FD680",
+        "driverVendor": "mesa/msm",
+        "driverVersion": "26.0.8.0",
+        "windowProtocol": "wayland"
+      },
+      "paints": [
+        {
+          "name": "first-contentful-paint",
+          "start": 84
+        }
+      ],
+      "visibility": "visible",
+      "render_callback_result": "121 frames",
+      "raf_intervals_ms": {
+        "count": 120,
+        "median": 16.0,
+        "p95": 19,
+        "max": 65
+      }
+    }
+  ],
+  "browser_install": {
+    "source": "Mozilla signed APT repository",
+    "version": "159.0~build1",
+    "language_pack": "zh-CN",
+    "repo_signing_key_fingerprint": "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3",
+    "dock_uses_native": true,
+    "snap_retained": true,
+    "snap_profile_copied_locally_source_retained": true
+  },
+  "gtk_probe": [
+    {
+      "scope": "bounded GTK GL window, no cache drop; not browser benchmark",
+      "import_ms": 356.77,
+      "mapped_ms": 575.11,
+      "first_after_paint_ms": 860.9,
+      "page_after_paint_ms": 14.9,
+      "renderer": "GskGLRenderer"
+    },
+    {
+      "scope": "bounded GTK GL window, no cache drop; not browser benchmark",
+      "import_ms": 329.79,
+      "mapped_ms": 542.1,
+      "first_after_paint_ms": 798.68,
+      "page_after_paint_ms": 11.14,
+      "renderer": "GskGLRenderer"
+    },
+    {
+      "scope": "bounded GTK GL window, no cache drop; not browser benchmark",
+      "import_ms": 325.26,
+      "mapped_ms": 533.93,
+      "first_after_paint_ms": 782.36,
+      "page_after_paint_ms": 10.67,
+      "renderer": "GskGLRenderer"
+    }
+  ],
+  "storage_read_probe": {
+    "read_only": true,
+    "scope": "192 random 4KiB O_DIRECT reads from existing GTK library; no global cache drop",
+    "median_ms": 0.204,
+    "p95_ms": 0.792,
+    "max_ms": 1.036
+  },
+  "limits": [
+    "Startup numbers measure Marionette readiness, not physical click-to-photon latency. NewSession includes automation initialization.",
+    "Profiles were isolated, data page was local, runs were few and sequential; these are diagnostic comparisons, not population benchmarks.",
+    "Native and Snap use different packaged libraries/Mesa; differences cannot be assigned entirely to sandbox overhead.",
+    "One installed-159 run timed out during rendering callback. Bounded visible retest completed 120 frame intervals; original failure is retained and not assigned a proven cause.",
+    "requestAnimationFrame spacing is not a physical display scanout or whole-desktop FPS measurement."
+  ],
+  "unresolved": {
+    "speakers_microphone": "No ALSA soundcard; missing SC8180x board audio topology/driver integration",
+    "camera": "No camera capture device; missing board camera pipeline integration",
+    "lte": "Modem factory-test, online request QMI52 DeviceNotReady, no net data port/ModemManager modem",
+    "usb_root_suspend_resume": "Unresolved; sleep disabled, not tested this round",
+    "hardware_video_decode": "Not validated; Firefox reports unavailable"
+  },
+  "reboot_or_suspend_performed": false,
+  "temporary_test_cleanup_completed": true
+}

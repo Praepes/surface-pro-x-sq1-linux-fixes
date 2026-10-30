@@ -35,4 +35,4 @@ Only source patches, configuration and sanitized notes are published. Device-spe
 
 License: GPL-2.0-only, except where individual upstream files specify otherwise.
 
-Ubuntu follow-up: [native SQ1 graphics comparisons](docs/ubuntu-graphics.md) reproduce GTK Vulkan corruption; a tested OpenGL mitigation and source-only validation fixtures are included. Complete Ubuntu image boot remains unverified.
+Ubuntu follow-up: [native SQ1 graphics comparisons](docs/ubuntu-graphics.md) reproduce GTK Vulkan corruption; a tested OpenGL mitigation and source-only validation fixtures are included. The complete Ubuntu USB-root image now boots GNOME on physical SQ1. Touch backport and Bluetooth configuration work live; their boot persistence is staged but not reboot-tested. See [physical fixes and Firefox startup comparison](docs/ubuntu-physical-20261030.md). Audio, cameras, LTE and USB-root suspend/resume remain unresolved.

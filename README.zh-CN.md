@@ -22,4 +22,4 @@
 
 [本次验证记录](validation/2026-10-29.json) · [触摸修复安装步骤](docs/touch.md)
 
-Ubuntu 后续：[原生图形对照记录](docs/ubuntu-graphics.md) 已复现 GTK/Vulkan 花屏，附 OpenGL 缓解配置及测试源码；完整 Ubuntu 镜像启动仍未验收。
+Ubuntu 后续：[原生图形对照记录](docs/ubuntu-graphics.md) 已复现 GTK/Vulkan 花屏，附 OpenGL 缓解配置及测试源码；完整 Ubuntu 已在 SQ1 上从 USB 根盘进入 GNOME；触摸回移和蓝牙配置修复已实时验证，持久化配置尚未重启验收。详见[实机修复与 Firefox 启动对照](docs/ubuntu-physical-20261030.md)。音频、摄像头、LTE 和 USB 根盘睡眠恢复仍未解决。

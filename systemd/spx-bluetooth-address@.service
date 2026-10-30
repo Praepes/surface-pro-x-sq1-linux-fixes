@@ -1,0 +1,12 @@
+[Unit]
+Description=Configure Surface Pro X UART Bluetooth address (%I)
+After=systemd-udevd.service
+StartLimitIntervalSec=90
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/libexec/spx-bluetooth-address %I
+TimeoutStartSec=45
+Restart=on-failure
+RestartSec=3

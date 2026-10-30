@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/denysvitali/linux-surface",
+  "commit": "cfcaa144842c79bd11cc343de38ca5536f8adcee",
+  "files": {
+    "Makefile": "684e2bc8238db1787b99af3163fece1d9a2c45c757082ccd388ff0aa7a2ef9c2",
+    "spi-hid-core.c": "7a0103146b0e0f8c27b518dd8b6df1712cb21bbdda9761ac06456245ac37804b",
+    "spi-hid-core.h": "d0afbddbe7498df062c4720273475ac3dc0026066bc5138eb39f69b057ec98be",
+    "spi-hid_trace.h": "d8f35ee21eb3c7c87d38022a562e64f4e1153cbb0583c3c36fa344cd7e2078fe",
+    "trace.c": "9930074e5d1528c56da37f7099e2949d4108f67fdcc13c5bf6df3538e4ef9adf"
+  }
+}

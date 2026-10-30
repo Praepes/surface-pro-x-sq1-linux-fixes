@@ -1,0 +1,52 @@
+#!/usr/bin/python3
+import sys,re,time,secrets,socket,struct
+from pathlib import Path
+name=sys.argv[1]
+assert re.fullmatch(r'hci[0-9]+',name)
+device=Path('/sys/class/bluetooth')/name
+if '/c8c000.serial/' not in str(device.resolve(strict=True)):
+    raise SystemExit('Not the Surface Pro X UART Bluetooth controller')
+index=name[3:]
+# Use the kernel management API directly. btmgmt can remain in its event
+# loop when launched without an interactive stdin by a system service.
+mgmt=socket.socket(socket.AF_BLUETOOTH,socket.SOCK_RAW,socket.BTPROTO_HCI)
+mgmt.bind((0xffff,3))
+mgmt.settimeout(5)
+index=int(index)
+def command(opcode,payload=b''):
+    mgmt.send(struct.pack('<HHH',opcode,index,len(payload))+payload)
+    deadline=time.monotonic()+5
+    while time.monotonic()<deadline:
+        packet=mgmt.recv(65535)
+        event,controller,length=struct.unpack_from('<HHH',packet)
+        body=packet[6:6+length]
+        if controller!=index or event not in (1,2):continue
+        reply,status=struct.unpack_from('<HB',body)
+        if reply!=opcode:continue
+        if status:raise RuntimeError(f'MGMT opcode {opcode:#x} failed: {status:#x}')
+        if event==1:return body[3:]
+    raise TimeoutError('Bluetooth management reply timed out')
+manufacturer,supported,missing=struct.unpack('<HII',command(0x0037))
+if missing==0:
+    print('Bluetooth already configured; no address change or radio reset')
+    raise SystemExit(0)
+assert missing==2,(manufacturer,supported,missing)
+folder=Path('/var/lib/spx');folder.mkdir(mode=0o700,exist_ok=True)
+path=folder/'bluetooth-address'
+if not path.exists():
+    address=bytes([0x02])+secrets.token_bytes(5)
+    path.write_text(':'.join(f'{x:02X}' for x in address)+'\n');path.chmod(0o600)
+address=path.read_text().strip()
+assert re.fullmatch(r'02(:[0-9A-F]{2}){5}',address)
+command(0x0039,bytes.fromhex(address.replace(':',''))[::-1])
+for n in range(30):
+    try:
+        info=command(0x0004)
+        if len(info)>6:
+            print('Surface Bluetooth controller configured')
+            break
+    except RuntimeError:
+        pass
+    time.sleep(.2)
+else:
+    raise SystemExit('Bluetooth controller did not become configured')
